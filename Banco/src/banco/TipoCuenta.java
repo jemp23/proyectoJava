@@ -9,6 +9,7 @@ package banco;
  * @author leon
  */
 public class TipoCuenta {
-    String Descripcion;
+    
+    
     
 }
