@@ -9,5 +9,7 @@ package banco;
  * @author usuario
  */
 public class cliente {
+    private String nombreCliente;
+    private Long idCliente;
     
 }
