@@ -8,6 +8,8 @@ package banco;
  *
  * @author leon
  */
-public class CuentaBancaria {
-    
+public class CuentaBancaria EXTEND TIPOcUENTA {
+ private FechaApertura  date ;
+  private NumeroCuenta  String ;
+ private  idCuentaBancaria  long;     
 }
