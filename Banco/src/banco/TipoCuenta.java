@@ -1,15 +1,17 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package banco;
 
-/**
- *
- * @author leon
- */
-public class TipoCuenta {
-    
-    
-    
+public class TipoCuenta 
+{
+private String descripcion="";
+private long idTipocuenta=0;
+
+public TipoCuenta()
+    {
+    }
+public void addTipoCuenta(String descripcion)
+    {
+        idTipocuenta++;
+        this.descripcion= descripcion;
+    }
 }
