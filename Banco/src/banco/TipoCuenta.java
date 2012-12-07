@@ -13,11 +13,12 @@ public TipoCuenta()
     {
         
     }
-public void addTipoCuenta() throws IOException
+public void addTipoCuenta(long idTipocuenta) throws IOException
     {
         System.out.println("Ingrese Tipo de Cuenta");
         this.descripcion= herramienta.Herramienta.leerEntrada();
-        ++idTipocuenta;
+        this.idTipocuenta=idTipocuenta;
+        
     }
 public long getIdTipocuenta()
     {
