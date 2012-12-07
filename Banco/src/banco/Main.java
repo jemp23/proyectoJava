@@ -29,6 +29,59 @@ public static void mostrarMenu()
             System.out.println("Seleccione una opción.");
     }
 
+public static String mostrarMenuReporte() throws IOException
+    {
+        String respuesta="0";
+            
+            Herramienta.limpiarPantalla(20);
+            System.out.println("MENU DE REPORTES");
+            System.out.println("1. Consultar Cliente");
+            System.out.println("2. Consultar Cuenta");
+            System.out.println("3. Listado de Clientes");
+            System.out.println("4. Listado de Cuentas");
+            System.out.println("5. Listado de Tipos de Operaciones");
+            System.out.println("6. Listado de Tipo de Cuentas");
+            System.out.println("7. Volver");
+            System.out.println("Seleccione una opción.");
+            
+            respuesta=Herramienta.leerEntrada();
+            
+            return respuesta;
+    }
+
+public static void seleccioneReporte() throws InterruptedException, IOException {
+       String respuesta="0";
+        do {
+            respuesta = mostrarMenuReporte();
+            switch (respuesta) {
+                case "1":
+                    
+                    break;
+                case "2":
+                    
+                    break;
+                case "3":
+                    
+                    break;
+                case "4":
+                    
+                    break;
+                case "5":
+                        imprimirTipodeCuenta();
+                        break;
+                case "6":
+                    
+                    break;
+                case "7":
+                    System.out.println("Menu Principal");
+                    break;
+                default:
+                    Herramienta.limpiarPantalla(20);
+                    System.out.println("Opcion Invalida");
+                    Herramienta.pausa(3000);
+            }
+        } while(!"7".equals(respuesta));;
+    }
 public static void nuevoTipodeCuenta() throws IOException, InterruptedException
     {
      Herramienta.limpiarPantalla(20);   
@@ -47,10 +100,11 @@ public static void nuevoTipodeCuenta() throws IOException, InterruptedException
 public static void imprimirTipodeCuenta() throws InterruptedException
     {
      Herramienta.limpiarPantalla(20);
-        System.out.println("IMPRIMIR TIPOS DE CUENTA");   
+        System.out.println("IMPRIMIR TIPOS DE CUENTA"); 
+        System.out.println("codigo \t Descripción");
      for (int i = 0; i < contadorTipoCuenta; i++) 
             {
-             System.out.println(tipoCuenta[i].getIdTipocuenta()+ " " + tipoCuenta[i].getDescripcion());
+             System.out.println(tipoCuenta[i].getIdTipocuenta()+ " \t " + tipoCuenta[i].getDescripcion());
             }
      Herramienta.pausa(3000);
     }
@@ -84,7 +138,7 @@ public static void imprimirTipodeCuenta() throws InterruptedException
                     System.out.println("Nueva Cuenta Bancaria");
                     break;
                 case "5":
-                        imprimirTipodeCuenta();
+                        seleccioneReporte();
                         break;
                 case "6":
                     Herramienta.limpiarPantalla(20);
