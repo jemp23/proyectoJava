@@ -29,9 +29,9 @@ public static void mostrarMenu()
             System.out.println("Seleccione una opción.");
     }
 
-public static String mostrarMenuReporte() throws IOException
+public static int mostrarMenuReporte() throws IOException
     {
-        String respuesta="0";
+        int respuesta = 0;
             
             Herramienta.limpiarPantalla(20);
             System.out.println("MENU DE REPORTES");
@@ -44,35 +44,35 @@ public static String mostrarMenuReporte() throws IOException
             System.out.println("7. Volver");
             System.out.println("Seleccione una opción.");
             
-            respuesta=Herramienta.leerEntrada();
+            respuesta= Integer.parseInt(Herramienta.leerEntrada());
             
             return respuesta;
     }
 
 public static void seleccioneReporte() throws InterruptedException, IOException {
-       String respuesta="0";
+       int respuesta=0;
         do {
             respuesta = mostrarMenuReporte();
             switch (respuesta) {
-                case "1":
+                case 1:
                     
                     break;
-                case "2":
+                case 2:
                     
                     break;
-                case "3":
+                case 3:
                     
                     break;
-                case "4":
+                case 4:
                     
                     break;
-                case "5":
+                case 5:
                         imprimirTipodeCuenta();
                         break;
-                case "6":
+                case 6:
                     
                     break;
-                case "7":
+                case 7:
                     System.out.println("Menu Principal");
                     break;
                 default:
@@ -80,7 +80,7 @@ public static void seleccioneReporte() throws InterruptedException, IOException 
                     System.out.println("Opcion Invalida");
                     Herramienta.pausa(3000);
             }
-        } while(!"7".equals(respuesta));;
+        } while(respuesta!=7);;
     }
 public static void nuevoTipodeCuenta() throws IOException, InterruptedException
     {
@@ -111,44 +111,44 @@ public static void imprimirTipodeCuenta() throws InterruptedException
 
   public static void main(String[] args) throws IOException, InterruptedException 
   {
-   String respuesta;
+   int respuesta;
    tipoCuenta = new TipoCuenta[10];
 
 
         do {
             
             mostrarMenu();//muestro el menu 
-            respuesta = Herramienta.leerEntrada(); //leo una respuesta  
+            respuesta = Integer.parseInt(Herramienta.leerEntrada()); //leo una respuesta  
                     
             
             switch (respuesta) {
-                case "1":
+                case 1:
                     Herramienta.limpiarPantalla(20);
                     System.out.println("Nuevo Cliente");
                     break;
-                case "2":
+                case 2:
                         nuevoTipodeCuenta();
                          break;
-                case "3":
+                case 3:
                     Herramienta.limpiarPantalla(20);
                     System.out.println("Tipos de Operaciones");
                     break;
-                case "4":
+                case 4:
                     Herramienta.limpiarPantalla(20);
                     System.out.println("Nueva Cuenta Bancaria");
                     break;
-                case "5":
+                case 5:
                         seleccioneReporte();
                         break;
-                case "6":
+                case 6:
                     Herramienta.limpiarPantalla(20);
                     System.out.println("Reportes");
                     break;
-                case "7":
+                case 7:
                     Herramienta.limpiarPantalla(20);
                     System.out.println("Autores");
                     break;                    
-                case "8":
+                case 8:
                     Herramienta.limpiarPantalla(20);
                     System.out.println("Adios");
                     break;
@@ -158,7 +158,7 @@ public static void imprimirTipodeCuenta() throws InterruptedException
                     Herramienta.pausa(3000);
                     
             }
-        }while(!"8".equals(respuesta));
+        }while(respuesta!=8);
     }
 
 }
