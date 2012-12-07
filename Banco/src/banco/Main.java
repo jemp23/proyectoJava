@@ -2,27 +2,18 @@
 package banco;
 
 import herramienta.Herramienta;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
+
 
 
 public class Main 
 {
-
-
-
-  public static void main(String[] args) throws IOException, InterruptedException {
-    
-
-       InputStreamReader entrada = new InputStreamReader(System.in);
-       BufferedReader leer = new BufferedReader(entrada);
-       String entradaTeclado;
-       String respuesta="0";
-       
-        
-        do {
-            
+    //declaro las varibles a utilizar
+   static TipoCuenta[] tipoCuenta; 
+   static int contadorTipoCuenta = 0;
+   
+public static void mostrarMenu()
+    {
             Herramienta.limpiarPantalla(20);
             System.out.println("MENU");
             System.out.println("1. Nuevo Cliente");
@@ -34,10 +25,30 @@ public class Main
             System.out.println("7. Autores");
             System.out.println("8. Salir");
             System.out.println("Seleccione una opción.");
+    }
 
+public static void nuevoTipodeCuenta() throws IOException
+    {
+     Herramienta.limpiarPantalla(20);   
+     tipoCuenta[contadorTipoCuenta] = new TipoCuenta();
+     tipoCuenta[contadorTipoCuenta].addTipoCuenta();   
+    contadorTipoCuenta++;
+    
             
-            entradaTeclado = leer.readLine();
-            respuesta = entradaTeclado.toString();
+             
+    }
+
+  public static void main(String[] args) throws IOException, InterruptedException 
+  {
+   String respuesta;
+   tipoCuenta = new TipoCuenta[100];
+
+
+        do {
+            
+            mostrarMenu();//muestro el menu 
+            respuesta = Herramienta.leerEntrada(); //leo una respuesta  
+                    
             
             switch (respuesta) {
                 case "1":
@@ -45,9 +56,8 @@ public class Main
                     System.out.println("Nuevo Cliente");
                     break;
                 case "2":
-                    Herramienta.limpiarPantalla(20);
-                    System.out.println("Tipos de Cuentas");
-                    break;
+                        nuevoTipodeCuenta();
+                         break;
                 case "3":
                     Herramienta.limpiarPantalla(20);
                     System.out.println("Tipos de Operaciones");
