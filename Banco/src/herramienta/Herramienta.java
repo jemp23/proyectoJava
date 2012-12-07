@@ -4,6 +4,10 @@
  */
 package herramienta;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 /**
  *
  * @author Juan Motta
@@ -24,5 +28,14 @@ public class Herramienta
         System.out.println("...");
         Thread.sleep(milisegundos);
         }
+        
+        public static String leerEntrada() throws IOException
+            {
+            InputStreamReader entrada = new InputStreamReader(System.in);
+            BufferedReader leer = new BufferedReader(entrada);
+            String entradaTeclado;
+            entradaTeclado = leer.readLine();
+            return entradaTeclado;
+            }
     
 }
