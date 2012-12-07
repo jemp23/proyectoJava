@@ -5,17 +5,25 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+
 public class Main 
 {
 
+    private static void limpiarPantalla(int lineas)
+        {
+            for (int i = 0; i < lineas; i++) 
+                {
+                    System.out.println("");
+                }
+        } 
 
   public static void main(String[] args) throws IOException {
         BufferedReader leer = new BufferedReader(new InputStreamReader(System.in));
         int seleccion;
         int codigo;
-        Principal obj = new Principal();
+        
         do {
-            obj.limpiar_pantalla();
+            limpiarPantalla(20);
             System.out.println("MENU");
             System.out.println("1. Nuevo Cliente");
             System.out.println("2. Tipos de Cuentas");
@@ -30,31 +38,31 @@ public class Main
             seleccion = Integer.parseInt(leer.readLine());
             switch (seleccion) {
                 case 1:
-                    obj.limpiar_pantalla();
+                    limpiarPantalla(20);
                     System.out.println("Nuevo Cliente");
                     break;
                 case 2:
-                    obj.limpiar_pantalla();
+                    limpiarPantalla(20);
                     System.out.println("Tipos de Cuentas");
                     break;
                 case 3:
-                    obj.limpiar_pantalla();
+                    limpiarPantalla(20);
                     System.out.println("Tipos de Operaciones");
                     break;
                 case 4:
-                    obj.limpiar_pantalla();
+                    limpiarPantalla(20);
                     System.out.println("Nueva Cuenta Bancaria");
                     break;
                 case 5:
-                    obj.limpiar_pantalla();
+                    limpiarPantalla(20);
                     System.out.println("Operaciones Bancarias");
                     break;
                 case 6:
-                    obj.limpiar_pantalla();
+                    limpiarPantalla(20);
                     System.out.println("Reportes");
                     break;
                 case 7:
-                    obj.limpiar_pantalla();
+                    limpiarPantalla(20);
                     System.out.println("Adios");
                     break;
                 default:
@@ -64,12 +72,4 @@ public class Main
         } while (seleccion != 7);
     }
 
-    public void limpiar_pantalla(){
-        System.out.println("\n");
-        System.out.println("\n");
-        System.out.println("\n");
-        System.out.println("\n");
-        System.out.println("\n");
-        System.out.println("\n");   
-    }
 }
