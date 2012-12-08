@@ -32,7 +32,7 @@ public class Main {
 
         Herramienta.limpiarPantalla(20);
         System.out.println("MENU DE REPORTES");
-        System.out.println("1. Consultar Cliente");
+        System.out.println("1. Consultar Cuentas de un Cliente");
         System.out.println("2. Consultar Cuenta");
         System.out.println("3. Listado de Clientes");
         System.out.println("4. Listado de Cuentas");
@@ -140,7 +140,7 @@ public class Main {
                     System.out.println(clientes[pos].getIdCliente()+" "+clientes[pos].getNombreCliente());
                     System.out.println("Cuentas:");
                     for (int j = 0; j < clientes[pos].getContadorCuentas(); j++) {
-                            System.out.println(clientes[pos].cuentas[j].getNumeroCuenta());                    
+                            System.out.println(clientes[pos].cuentas[j].getTipoCuenta()+": "+clientes[pos].cuentas[j].getNumeroCuenta());                    
                     }
                 }
                 System.out.println("Desea Buscar Otro Cliente? s/n");
@@ -151,7 +151,7 @@ public class Main {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     public static void imprimir_lista_clientes() {
         try {
             System.out.println("ID     NOMBRE");
@@ -187,9 +187,13 @@ public class Main {
                     System.out.println("Ingrese el Nro de Cuenta:");
                     String cuenta = Herramienta.leerEntrada();
                     
+                    for (int i = 0; i < contadorTipoCuenta; i++) {
+                        System.out.println((i+1)+". "+tipoCuenta[i].getDescripcion());
+                        
+                    }
                     System.out.println("Seleccione el tipo de Cuenta:");
                     int tipo_cuenta = Integer.parseInt(Herramienta.leerEntrada());
-                    clientes[pos].setCuentas(cuenta,tipo_cuenta);
+                    clientes[pos].setCuentas(cuenta,tipoCuenta[tipo_cuenta-1].getDescripcion());
                 }
                 
                 System.out.println("Desea Ingresar otra cuenta para otro Cliente? s/n");

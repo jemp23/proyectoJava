@@ -49,7 +49,7 @@ public class cliente{
         return cuentas;
     }
 
-    public void setCuentas(String nro_cuenta, int tipo_cuenta) {
+    public void setCuentas(String nro_cuenta, String tipo_cuenta) {
         this.cuentas[contadorCuentas] = new CuentaBancaria(nro_cuenta,tipo_cuenta);
         contadorCuentas++;
     }

@@ -10,17 +10,15 @@ public class CuentaBancaria {
     private String fechaApertura;
     private int idCuentaBancaria;
     private String numeroCuenta;
-    private int tipoCuenta;
+    private String tipoCuenta;
     static int contadorCuentas;
 
-    
-    
     
     public CuentaBancaria(){
     
     }
     
-    public CuentaBancaria(String nro_cuenta, int tipoCuenta){
+    public CuentaBancaria(String nro_cuenta, String tipoCuenta){
         this.numeroCuenta = nro_cuenta;
         java.util.Date fecha = new Date();
         this.fechaApertura = String.valueOf(fecha);
@@ -51,5 +49,13 @@ public class CuentaBancaria {
 
     public void setNumeroCuenta(String numeroCuenta) {
         this.numeroCuenta = numeroCuenta;
+    }
+    
+    public String getTipoCuenta() {
+        return tipoCuenta;
+    }
+
+    public void setTipoCuenta(String tipoCuenta) {
+        this.tipoCuenta = tipoCuenta;
     }
 }
