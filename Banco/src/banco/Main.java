@@ -138,8 +138,8 @@ public class Main {
                 if(pos == -1){
                     System.out.println(" No hay coincidencias.");
                 }else{
-                    System.out.println(" ID     NOMBRE");
-                    System.out.println(clientes[pos].getIdCliente()+" "+clientes[pos].getNombreCliente());
+                    System.out.println(" ID  \tNOMBRE");
+                    System.out.println(clientes[pos].getIdCliente()+" \t"+clientes[pos].getNombreCliente());
                     System.out.println("Cuentas:");
                     for (int j = 0; j < clientes[pos].getContadorCuentas(); j++) {
                             System.out.println(clientes[pos].cuentas[j].getTipoCuenta()+": "+clientes[pos].cuentas[j].getNumeroCuenta());                    
@@ -156,12 +156,13 @@ public class Main {
     
     public static void imprimir_lista_clientes() {
         try {
-            System.out.println("ID     NOMBRE");
+            System.out.println("ID     \tNOMBRE");
             for (int i = 0; i < contadorClientes; i++) {
-                System.out.println(clientes[i].getIdCliente() + "   " + clientes[i].getNombreCliente());
+                System.out.println(clientes[i].getIdCliente() + "  \t " + clientes[i].getNombreCliente());
             }
-            System.out.println("Presione Enter para continuar.");
-            Herramienta.leerEntrada();
+            
+            Herramienta.presioneUnaTecla();
+            
         } catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
