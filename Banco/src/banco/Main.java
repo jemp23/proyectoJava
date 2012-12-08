@@ -1,80 +1,73 @@
-
 package banco;
-
 
 import herramienta.Herramienta;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
-
-public class Main 
-{
+public class Main {
     //declaro las varibles a utilizar
-   static TipoCuenta[] tipoCuenta; 
-   static cliente[] clientes = new cliente[200];
-   static int contadorTipoCuenta = 0;
-   static int contadorClientes = 0;
 
-   
-public static void mostrarMenu()
-    {
-            Herramienta.limpiarPantalla(20);
-            System.out.println("MENU");
-            System.out.println("1. Nuevo Cliente");
-            System.out.println("2. Tipos de Cuentas");
-            System.out.println("3. Tipos de Operaciones");
-            System.out.println("4. Nueva Cuenta Bancaria");
-            System.out.println("5. Reportes");
-            System.out.println("6. Operaciones Bancarias");
-            System.out.println("7. Autores");
-            System.out.println("8. Salir");
-            System.out.println("Seleccione una opción.");
+    static TipoCuenta[] tipoCuenta;
+    static cliente[] clientes = new cliente[200];
+    static int contadorTipoCuenta = 0;
+    static int contadorClientes = 0;
+
+    public static void mostrarMenu() {
+        Herramienta.limpiarPantalla(20);
+        System.out.println("MENU");
+        System.out.println("1. Nuevo Cliente");
+        System.out.println("2. Tipos de Cuentas");
+        System.out.println("3. Tipos de Operaciones");
+        System.out.println("4. Nueva Cuenta Bancaria");
+        System.out.println("5. Reportes");
+        System.out.println("6. Operaciones Bancarias");
+        System.out.println("7. Autores");
+        System.out.println("8. Salir");
+        System.out.println("Seleccione una opción.");
     }
 
-public static int mostrarMenuReporte() throws IOException
-    {
+    public static int mostrarMenuReporte() throws IOException {
         int respuesta = 0;
-            
-            Herramienta.limpiarPantalla(20);
-            System.out.println("MENU DE REPORTES");
-            System.out.println("1. Consultar Cliente");
-            System.out.println("2. Consultar Cuenta");
-            System.out.println("3. Listado de Clientes");
-            System.out.println("4. Listado de Cuentas");
-            System.out.println("5. Listado de Tipos de Operaciones");
-            System.out.println("6. Listado de Tipo de Cuentas");
-            System.out.println("7. Volver");
-            System.out.println("Seleccione una opción.");
-            
-            respuesta= Integer.parseInt(Herramienta.leerEntrada());
-            
-            return respuesta;
+
+        Herramienta.limpiarPantalla(20);
+        System.out.println("MENU DE REPORTES");
+        System.out.println("1. Consultar Cliente");
+        System.out.println("2. Consultar Cuenta");
+        System.out.println("3. Listado de Clientes");
+        System.out.println("4. Listado de Cuentas");
+        System.out.println("5. Listado de Tipos de Operaciones");
+        System.out.println("6. Listado de Tipo de Cuentas");
+        System.out.println("7. Volver");
+        System.out.println("Seleccione una opción.");
+
+        respuesta = Integer.parseInt(Herramienta.leerEntrada());
+
+        return respuesta;
     }
 
-public static void seleccioneReporte() throws InterruptedException, IOException {
-       int respuesta=0;
+    public static void seleccioneReporte() throws InterruptedException, IOException {
+        int respuesta = 0;
         do {
             respuesta = mostrarMenuReporte();
             switch (respuesta) {
                 case 1:
-                    
+                    buscar_cliente();
                     break;
                 case 2:
-                    
+
                     break;
                 case 3:
                     imprimir_lista_clientes();
                     break;
                 case 4:
-                    
+
                     break;
                 case 5:
-                        imprimirTipodeCuenta();
-                        break;
+                    imprimirTipodeCuenta();
+                    break;
                 case 6:
-                    
+
                     break;
                 case 7:
                     System.out.println("Menu Principal");
@@ -84,82 +77,102 @@ public static void seleccioneReporte() throws InterruptedException, IOException 
                     System.out.println("Opcion Invalida");
                     Herramienta.pausa(3000);
             }
-        } while(respuesta!=7);;
-    }
-public static void nuevoTipodeCuenta() throws IOException, InterruptedException
-    {
-     Herramienta.limpiarPantalla(20);   
-     if (contadorTipoCuenta<10)
-        {
-        tipoCuenta[contadorTipoCuenta] = new TipoCuenta();
-        tipoCuenta[contadorTipoCuenta].addTipoCuenta(contadorTipoCuenta);   
-        contadorTipoCuenta++;
-        }
-     else
-        {
-         System.out.println("CUPO DE TIPO DE CUENTA LLENO");
-         Herramienta.pausa(3000);
-        }
-    }
-public static void imprimirTipodeCuenta() throws InterruptedException
-    {
-     Herramienta.limpiarPantalla(20);
-        System.out.println("IMPRIMIR TIPOS DE CUENTA"); 
-        System.out.println("codigo \t Descripción");
-     for (int i = 0; i < contadorTipoCuenta; i++) 
-            {
-             System.out.println(tipoCuenta[i].getIdTipocuenta()+ " \t " + tipoCuenta[i].getDescripcion());
-            }
-     Herramienta.pausa(3000);
+        } while (respuesta != 7);;
     }
 
-public static void nuevo_cliente(){
-    char resp = 's';
+    public static void nuevoTipodeCuenta() throws IOException, InterruptedException {
+        Herramienta.limpiarPantalla(20);
+        if (contadorTipoCuenta < 10) {
+            tipoCuenta[contadorTipoCuenta] = new TipoCuenta();
+            tipoCuenta[contadorTipoCuenta].addTipoCuenta(contadorTipoCuenta);
+            contadorTipoCuenta++;
+        } else {
+            System.out.println("CUPO DE TIPO DE CUENTA LLENO");
+            Herramienta.pausa(3000);
+        }
+    }
+
+    public static void imprimirTipodeCuenta() throws InterruptedException {
+        Herramienta.limpiarPantalla(20);
+        System.out.println("IMPRIMIR TIPOS DE CUENTA");
+        System.out.println("codigo \t Descripción");
+        for (int i = 0; i < contadorTipoCuenta; i++) {
+            System.out.println(tipoCuenta[i].getIdTipocuenta() + " \t " + tipoCuenta[i].getDescripcion());
+        }
+        Herramienta.pausa(3000);
+    }
+
+    public static void nuevo_cliente() {
+        char resp = 's';
         try {
-            
-            do{
+
+            do {
                 System.out.println("Ingrese el Nombre del Cliente");
                 String nombre = Herramienta.leerEntrada();
                 clientes[contadorClientes] = new cliente(nombre);
                 contadorClientes++;
                 System.out.println("Desea Registrar Otro Cliente? s/n");
                 resp = Herramienta.leerEntrada().charAt(0);
-           }while (resp=='s' || resp=='S');
-            
+            } while (resp == 's' || resp == 'S');
+
         } catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
-    
-    
-    
+    }
 
-}
+    public static void buscar_cliente() {
+        char resp;
+        try {            
+            do {
+                int pos = -1;
+                System.out.println("Ingrese el Id del Cliente");
+                int id = Integer.parseInt(Herramienta.leerEntrada());
+                for (int i = 0; i < contadorClientes; i++) {
+                    if (clientes[i].getIdCliente() == id) {
+                        pos = i;
+                        i = contadorClientes;
+                    }
+                }
+                if(pos == -1){
+                    System.out.println(" No se han conseguido coincidencias.");
+                }else{
+                    System.out.println(" ID     NOMBRE");
+                    System.out.println(clientes[pos].getIdCliente()+" "+clientes[pos].getNombreCliente());
+                }
+                System.out.println("Desea Buscar Otro Cliente? s/n");
+                resp = Herramienta.leerEntrada().charAt(0);
+            } while (resp == 's' || resp == 'S');
 
-public static void imprimir_lista_clientes(){
+        } catch (IOException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public static void imprimir_lista_clientes() {
         try {
             System.out.println("ID     NOMBRE");
             for (int i = 0; i < contadorClientes; i++) {
-                System.out.println(clientes[i].getIdCliente()+"   "+clientes[i].getNombreCliente());
+                System.out.println(clientes[i].getIdCliente() + "   " + clientes[i].getNombreCliente());
             }
             System.out.println("Presione Enter para continuar.");
             Herramienta.leerEntrada();
         } catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
-    
-}
-  public static void main(String[] args) throws IOException, InterruptedException 
-  {
-   int respuesta;
-   tipoCuenta = new TipoCuenta[10];
+
+    }
+
+    public static void main(String[] args) throws IOException, InterruptedException {
+        int respuesta;
+        tipoCuenta = new TipoCuenta[10];
 
 
         do {
-            
+
             mostrarMenu();//muestro el menu 
             respuesta = Integer.parseInt(Herramienta.leerEntrada()); //leo una respuesta  
-                    
-            
+
+
             switch (respuesta) {
                 case 1:
                     Herramienta.limpiarPantalla(20);
@@ -167,7 +180,7 @@ public static void imprimir_lista_clientes(){
                     break;
                 case 2:
                     nuevoTipodeCuenta();
-                     break;
+                    break;
                 case 3:
                     Herramienta.limpiarPantalla(20);
                     System.out.println("Tipos de Operaciones");
@@ -177,8 +190,8 @@ public static void imprimir_lista_clientes(){
                     System.out.println("Nueva Cuenta Bancaria");
                     break;
                 case 5:
-                        seleccioneReporte();
-                        break;
+                    seleccioneReporte();
+                    break;
                 case 6:
                     Herramienta.limpiarPantalla(20);
                     System.out.println("Reportes");
@@ -186,7 +199,7 @@ public static void imprimir_lista_clientes(){
                 case 7:
                     Herramienta.limpiarPantalla(20);
                     System.out.println("Autores");
-                    break;                    
+                    break;
                 case 8:
                     Herramienta.limpiarPantalla(20);
                     System.out.println("Adios");
@@ -195,9 +208,8 @@ public static void imprimir_lista_clientes(){
                     Herramienta.limpiarPantalla(20);
                     System.out.println("Opcion Invalida");
                     Herramienta.pausa(3000);
-                    
-            }
-        }while(respuesta!=8);
-    }
 
+            }
+        } while (respuesta != 8);
+    }
 }
