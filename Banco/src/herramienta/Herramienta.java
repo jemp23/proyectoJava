@@ -46,7 +46,7 @@ public class Herramienta
         public static void acercaDe() throws  IOException
         {
         System.out.println("AUTORES");
-        System.out.println("EDDY BAUTISTA");
+        System.out.println("EDDY CAROLINA BAUTISTA");
         System.out.println("EDGAR LEON");
         System.out.println("JUAN MOTTA");
         System.out.println("KARLA OVALLES");
