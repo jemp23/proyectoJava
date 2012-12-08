@@ -83,15 +83,31 @@ public class Main {
     }
 
     public static void nuevoTipodeCuenta() throws IOException, InterruptedException {
-        Herramienta.limpiarPantalla(20);
-        if (contadorTipoCuenta < 10) {
-            tipoCuenta[contadorTipoCuenta] = new TipoCuenta();
-            tipoCuenta[contadorTipoCuenta].addTipoCuenta(contadorTipoCuenta);
-            contadorTipoCuenta++;
-        } else {
-            System.out.println("CUPO DE TIPO DE CUENTA LLENO");
-            Herramienta.pausa(3000);
-        }
+
+        char resp = 's';
+        try {
+                
+            do {
+                Herramienta.limpiarPantalla(20);
+                if (contadorTipoCuenta < 10) 
+                    {
+                    tipoCuenta[contadorTipoCuenta] = new TipoCuenta();
+                    tipoCuenta[contadorTipoCuenta].addTipoCuenta(contadorTipoCuenta);
+                    contadorTipoCuenta++;
+                    } 
+                else 
+                    {
+                    System.out.println("CUPO DE TIPO DE CUENTA LLENO");
+                    Herramienta.pausa(3000);
+                    }
+                System.out.println("Desea Registrar Otro tipo de cuenta? s/n");
+                resp = Herramienta.leerEntrada().charAt(0);
+                } while (resp == 's' || resp == 'S');
+
+            } catch (IOException ex) 
+            {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }
 
     public static void imprimirTipodeCuenta() throws InterruptedException {
@@ -106,9 +122,11 @@ public class Main {
 
     public static void nuevo_cliente() {
         char resp = 's';
+        
         try {
-
+                
             do {
+                Herramienta.limpiarPantalla(20);
                 System.out.println("Ingrese el Nombre del Cliente");
                 String nombre = Herramienta.leerEntrada();
                 clientes[contadorClientes] = new cliente(nombre);
@@ -124,6 +142,7 @@ public class Main {
 
     public static void buscar_cliente() {
         char resp;
+        Herramienta.limpiarPantalla(20);
         try {            
             do {
                 int pos = -1;
@@ -155,6 +174,7 @@ public class Main {
     }
     
     public static void imprimir_lista_clientes() {
+        Herramienta.limpiarPantalla(20);
         try {
             System.out.println("ID     \tNOMBRE");
             for (int i = 0; i < contadorClientes; i++) {
@@ -228,7 +248,7 @@ public class Main {
     public static void imprimir_tipos_operaciones() throws InterruptedException {
         System.out.println("TIPOS DE OPERACIONES");
         for (int i = 0; i < contadorOperaciones; i++) {
-            System.out.println(TiposOperaciones[i].getIdTipoOperacion() + ".  " + TiposOperaciones[i].getDescripcion());
+            System.out.println(TiposOperaciones[i].getIdTipoOperacion() + "\t " + TiposOperaciones[i].getDescripcion());
         }
         Herramienta.pausa(3000);
     }
@@ -246,8 +266,7 @@ public class Main {
 
             switch (respuesta) {
                 case 1:
-                    Herramienta.limpiarPantalla(20);
-                    nuevo_cliente();
+                      nuevo_cliente();
                     break;
                 case 2:
                     nuevoTipodeCuenta();
