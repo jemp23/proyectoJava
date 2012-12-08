@@ -31,6 +31,7 @@ public class Herramienta
  
         public static void presioneUnaTecla() throws  IOException
         {
+        limpiarPantalla(2);    
         System.out.println("PRESIONE UNA TECLA PARA CONTINUAR...");
         leerEntrada();
         }        
@@ -44,14 +45,15 @@ public class Herramienta
             }
         
         public static void acercaDe() throws  IOException
-        {
-        System.out.println("AUTORES");
-        System.out.println("EDDY CAROLINA BAUTISTA");
-        System.out.println("EDGAR LEON");
-        System.out.println("JUAN MOTTA");
-        System.out.println("KARLA OVALLES");
-        System.out.println("SHONATA CANCHICA");
-        leerEntrada();
-        } 
+            {
+            limpiarPantalla(20);    
+            System.out.println("AUTORES");
+            System.out.println("EDDY CAROLINA BAUTISTA");
+            System.out.println("EDGAR LEON");
+            System.out.println("JUAN MOTTA");
+            System.out.println("KARLA OVALLES");
+            System.out.println("SHONATA CANCHICA");
+            presioneUnaTecla();
+            } 
     
 }
