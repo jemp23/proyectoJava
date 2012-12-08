@@ -98,6 +98,7 @@ public class Main {
      public static void seleccioneOperacion() throws InterruptedException, IOException {
         int respuesta = 0;
         do {
+            Herramienta.limpiarPantalla(20);
             respuesta = mostrarTipoOperaciones();
             switch (respuesta) {
                 case 1:
@@ -227,6 +228,7 @@ public class Main {
         char resp;
         try {            
             do {
+                Herramienta.limpiarPantalla(20);
                 int pos = -1;
                 System.out.println("Ingrese el Id del Cliente");
                 int id = Integer.parseInt(Herramienta.leerEntrada());
@@ -310,20 +312,17 @@ public class Main {
                       ingresar_tipos_operaciones();
                       break;
                 case 4:
-                    Herramienta.limpiarPantalla(20);
-                    abrir_cuenta_bancaria();
-                    break;
+                      abrir_cuenta_bancaria();
+                      break;
                 case 5:
-                    seleccioneReporte();
-                    break;
+                      seleccioneReporte();
+                      break;
                 case 6:
-                    Herramienta.limpiarPantalla(20);
-                    seleccioneOperacion();
-                    break;
+                      seleccioneOperacion();
+                      break;
                 case 7:
-                    Herramienta.limpiarPantalla(20);
-                    Herramienta.acercaDe();
-                    break;
+                       Herramienta.acercaDe();
+                       break;
                 case 8:
                     Herramienta.limpiarPantalla(20);
                     System.out.println("Adios");
