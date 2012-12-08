@@ -4,6 +4,8 @@ package banco;
 
 import herramienta.Herramienta;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 
@@ -11,7 +13,9 @@ public class Main
 {
     //declaro las varibles a utilizar
    static TipoCuenta[] tipoCuenta; 
+   static cliente[] clientes = new cliente[200];
    static int contadorTipoCuenta = 0;
+   static int contadorClientes = 0;
 
    
 public static void mostrarMenu()
@@ -61,7 +65,7 @@ public static void seleccioneReporte() throws InterruptedException, IOException 
                     
                     break;
                 case 3:
-                    
+                    imprimir_lista_clientes();
                     break;
                 case 4:
                     
@@ -109,6 +113,41 @@ public static void imprimirTipodeCuenta() throws InterruptedException
      Herramienta.pausa(3000);
     }
 
+public static void nuevo_cliente(){
+    char resp = 's';
+        try {
+            
+            do{
+                System.out.println("Ingrese el Nombre del Cliente");
+                String nombre = Herramienta.leerEntrada();
+                clientes[contadorClientes] = new cliente(nombre);
+                contadorClientes++;
+                System.out.println("Desea Registrar Otro Cliente? s/n");
+                resp = Herramienta.leerEntrada().charAt(0);
+           }while (resp=='s' || resp=='S');
+            
+        } catch (IOException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+    
+    
+
+}
+
+public static void imprimir_lista_clientes(){
+        try {
+            System.out.println("ID     NOMBRE");
+            for (int i = 0; i < contadorClientes; i++) {
+                System.out.println(clientes[i].getIdCliente()+"   "+clientes[i].getNombreCliente());
+            }
+            System.out.println("Presione Enter para continuar.");
+            Herramienta.leerEntrada();
+        } catch (IOException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+}
   public static void main(String[] args) throws IOException, InterruptedException 
   {
    int respuesta;
@@ -124,11 +163,11 @@ public static void imprimirTipodeCuenta() throws InterruptedException
             switch (respuesta) {
                 case 1:
                     Herramienta.limpiarPantalla(20);
-                    System.out.println("Nuevo Cliente");
+                    nuevo_cliente();
                     break;
                 case 2:
-                        nuevoTipodeCuenta();
-                         break;
+                    nuevoTipodeCuenta();
+                     break;
                 case 3:
                     Herramienta.limpiarPantalla(20);
                     System.out.println("Tipos de Operaciones");
