@@ -28,7 +28,12 @@ public class Herramienta
         System.out.println("...");
         Thread.sleep(milisegundos);
         }
-        
+ 
+        public static void presioneUnaTecla() throws  IOException
+        {
+        System.out.println("PRESIONE UNA TECLA PARA CONTINUAR...");
+        leerEntrada();
+        }        
         public static String leerEntrada() throws IOException
             {
             InputStreamReader entrada = new InputStreamReader(System.in);
