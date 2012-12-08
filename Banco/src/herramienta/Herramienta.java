@@ -42,5 +42,15 @@ public class Herramienta
             entradaTeclado = leer.readLine();
             return entradaTeclado;
             }
+        
+        public static void acercaDe() throws  IOException
+        {
+        System.out.println("AUTORES");
+        System.out.println("EDDY BAUTISTA");
+        System.out.println("EDGAR LEON");
+        System.out.println("JUAN MOTTA");
+        System.out.println("KARLA OVALLES");
+        System.out.println("SHONATA CANCHICA");
+        } 
     
 }
