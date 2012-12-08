@@ -269,7 +269,7 @@ public class Main {
                     break;
                 case 7:
                     Herramienta.limpiarPantalla(20);
-                    System.out.println("Autores");
+                    Herramienta.acercaDe();
                     break;
                 case 8:
                     Herramienta.limpiarPantalla(20);

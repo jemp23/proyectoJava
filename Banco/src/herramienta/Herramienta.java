@@ -51,6 +51,7 @@ public class Herramienta
         System.out.println("JUAN MOTTA");
         System.out.println("KARLA OVALLES");
         System.out.println("SHONATA CANCHICA");
+        leerEntrada();
         } 
     
 }
