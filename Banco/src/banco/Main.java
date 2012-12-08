@@ -82,6 +82,38 @@ public class Main {
         } while (respuesta != 7);;
     }
 
+        public static int mostrarTipoOperaciones() throws IOException 
+            {
+            int respuesta = 0;
+            Herramienta.limpiarPantalla(20);
+            System.out.println("MENU DE OPERACIONES ");
+            System.out.println("1. DEPOSITO");
+            System.out.println("2. RETIRO");
+            System.out.println("3. Volver");
+            System.out.println("Seleccione una opción.");
+            respuesta = Integer.parseInt(Herramienta.leerEntrada());
+            return respuesta;
+            }
+ 
+     public static void seleccioneOperacion() throws InterruptedException, IOException {
+        int respuesta = 0;
+        do {
+            respuesta = mostrarTipoOperaciones();
+            switch (respuesta) {
+                case 1:
+                       break;
+                case 2:
+                    break;
+                case 3:
+                    System.out.println("Menu Principal");
+                    break;
+                default:
+                    Herramienta.limpiarPantalla(20);
+                    System.out.println("Opcion Invalida");
+                    Herramienta.pausa(3000);
+            }
+        } while (respuesta != 3);;
+    }       
     public static void nuevoTipodeCuenta() throws IOException, InterruptedException {
 
         char resp = 's';
@@ -213,7 +245,7 @@ public class Main {
                     String cuenta = Herramienta.leerEntrada();
                     
                     for (int i = 0; i < contadorTipoCuenta; i++) {
-                        System.out.println((i+1)+". "+tipoCuenta[i].getDescripcion());
+                        System.out.println((i+1)+". \t"+tipoCuenta[i].getDescripcion());
                         
                     }
                     System.out.println("Seleccione el tipo de Cuenta:");
@@ -234,6 +266,7 @@ public class Main {
         char resp = 's';
         try {
             do {
+                Herramienta.limpiarPantalla(20);
                 System.out.println("Ingrese el Tipo de  Operacion:");
                 String nombre = Herramienta.leerEntrada();
                 TiposOperaciones[contadorOperaciones] = new TipoOperacion(nombre);
@@ -274,9 +307,8 @@ public class Main {
                     nuevoTipodeCuenta();
                     break;
                 case 3:
-                    Herramienta.limpiarPantalla(20);
-                    ingresar_tipos_operaciones();
-                    break;
+                      ingresar_tipos_operaciones();
+                      break;
                 case 4:
                     Herramienta.limpiarPantalla(20);
                     abrir_cuenta_bancaria();
@@ -286,7 +318,7 @@ public class Main {
                     break;
                 case 6:
                     Herramienta.limpiarPantalla(20);
-                    System.out.println("Reportes");
+                    seleccioneOperacion();
                     break;
                 case 7:
                     Herramienta.limpiarPantalla(20);
