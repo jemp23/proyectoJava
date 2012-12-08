@@ -8,12 +8,18 @@ package banco;
  *
  * @author usuario
  */
-public class cliente {
+public class cliente{
     private String nombreCliente;
     private int idCliente;
+    public CuentaBancaria[] cuentas = new CuentaBancaria[10];
     static int contadorClientes = 0;
-    
-    
+    static int contadorCuentas = 0;
+
+    public static int getContadorCuentas() {
+        return contadorCuentas;
+    }
+   
+     
    public cliente() {
    }
     
@@ -38,10 +44,15 @@ public class cliente {
     public void setIdCliente(int idCliente) {
         this.idCliente = idCliente;
     }
-    
-    
-    
- 
+     
+    public CuentaBancaria[] getCuentas() {
+        return cuentas;
+    }
+
+    public void setCuentas(String nro_cuenta, int tipo_cuenta) {
+        this.cuentas[contadorCuentas] = new CuentaBancaria(nro_cuenta,tipo_cuenta);
+        contadorCuentas++;
+    }
     
 }
 

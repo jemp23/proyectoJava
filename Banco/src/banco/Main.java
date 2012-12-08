@@ -134,10 +134,14 @@ public class Main {
                     }
                 }
                 if(pos == -1){
-                    System.out.println(" No se han conseguido coincidencias.");
+                    System.out.println(" No hay coincidencias.");
                 }else{
                     System.out.println(" ID     NOMBRE");
                     System.out.println(clientes[pos].getIdCliente()+" "+clientes[pos].getNombreCliente());
+                    System.out.println("Cuentas:");
+                    for (int j = 0; j < clientes[pos].getContadorCuentas(); j++) {
+                            System.out.println(clientes[pos].cuentas[j].getNumeroCuenta());                    
+                    }
                 }
                 System.out.println("Desea Buscar Otro Cliente? s/n");
                 resp = Herramienta.leerEntrada().charAt(0);
@@ -162,6 +166,41 @@ public class Main {
 
     }
 
+    public static void abrir_cuenta_bancaria(){
+        char resp;
+        try {            
+            do {
+                int pos = -1;
+                System.out.println("Ingrese el Id del Cliente");
+                int id = Integer.parseInt(Herramienta.leerEntrada());
+                for (int i = 0; i < contadorClientes; i++) {
+                    if (clientes[i].getIdCliente() == id) {
+                        pos = i;
+                        i = contadorClientes;
+                    }
+                }
+                if(pos == -1){
+                    System.out.println(" No hay coincidencias.");
+                }else{
+                    System.out.println("Nombre: "+clientes[pos].getNombreCliente());
+                   
+                    System.out.println("Ingrese el Nro de Cuenta:");
+                    String cuenta = Herramienta.leerEntrada();
+                    
+                    System.out.println("Seleccione el tipo de Cuenta:");
+                    int tipo_cuenta = Integer.parseInt(Herramienta.leerEntrada());
+                    clientes[pos].setCuentas(cuenta,tipo_cuenta);
+                }
+                
+                System.out.println("Desea Ingresar otra cuenta para otro Cliente? s/n");
+                resp = Herramienta.leerEntrada().charAt(0);
+            } while (resp == 's' || resp == 'S');
+
+        } catch (IOException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }  
+    }
+    
     public static void main(String[] args) throws IOException, InterruptedException {
         int respuesta;
         tipoCuenta = new TipoCuenta[10];
@@ -187,7 +226,7 @@ public class Main {
                     break;
                 case 4:
                     Herramienta.limpiarPantalla(20);
-                    System.out.println("Nueva Cuenta Bancaria");
+                    abrir_cuenta_bancaria();
                     break;
                 case 5:
                     seleccioneReporte();

@@ -4,14 +4,30 @@
  */
 package banco;
 
-/**
- *
- * @author karla.ovalles
- */
+import java.util.Date;
+
 public class CuentaBancaria {
     private String fechaApertura;
     private int idCuentaBancaria;
     private String numeroCuenta;
+    private int tipoCuenta;
+    static int contadorCuentas;
+
+    
+    
+    
+    public CuentaBancaria(){
+    
+    }
+    
+    public CuentaBancaria(String nro_cuenta, int tipoCuenta){
+        this.numeroCuenta = nro_cuenta;
+        java.util.Date fecha = new Date();
+        this.fechaApertura = String.valueOf(fecha);
+        this.tipoCuenta = tipoCuenta;
+        contadorCuentas++;
+        this.idCuentaBancaria = contadorCuentas;
+    }
     
     public String getFechaApertura() {
         return fechaApertura;
