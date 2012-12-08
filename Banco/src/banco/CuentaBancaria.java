@@ -58,4 +58,9 @@ public class CuentaBancaria {
     public void setTipoCuenta(String tipoCuenta) {
         this.tipoCuenta = tipoCuenta;
     }
+    
+    public int getContadorCuentas()
+        {
+         return contadorCuentas;  
+        }
 }

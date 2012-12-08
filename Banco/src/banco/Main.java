@@ -172,6 +172,8 @@ public class Main {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+   
     
     public static void imprimir_lista_clientes() {
         Herramienta.limpiarPantalla(20);
