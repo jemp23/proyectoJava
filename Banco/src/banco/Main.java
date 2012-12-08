@@ -10,8 +10,10 @@ public class Main {
 
     static TipoCuenta[] tipoCuenta;
     static cliente[] clientes = new cliente[200];
+    static TipoOperacion[] TiposOperaciones = new TipoOperacion[10];
     static int contadorTipoCuenta = 0;
     static int contadorClientes = 0;
+    static int contadorOperaciones = 0;
 
     public static void mostrarMenu() {
         Herramienta.limpiarPantalla(20);
@@ -64,10 +66,10 @@ public class Main {
 
                     break;
                 case 5:
-                    imprimirTipodeCuenta();
+                    imprimir_tipos_operaciones();
                     break;
                 case 6:
-
+                    imprimirTipodeCuenta();
                     break;
                 case 7:
                     System.out.println("Menu Principal");
@@ -205,6 +207,31 @@ public class Main {
         }  
     }
     
+    public static void ingresar_tipos_operaciones(){
+        char resp = 's';
+        try {
+            do {
+                System.out.println("Ingrese el Tipo de  Operacion:");
+                String nombre = Herramienta.leerEntrada();
+                TiposOperaciones[contadorOperaciones] = new TipoOperacion(nombre);
+                contadorOperaciones++;
+                System.out.println("Desea Registrar Otro Tipo de Operacion? s/n");
+                resp = Herramienta.leerEntrada().charAt(0);
+            } while (resp == 's' || resp == 'S');
+
+        } catch (IOException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }  
+    
+    public static void imprimir_tipos_operaciones() throws InterruptedException {
+        System.out.println("TIPOS DE OPERACIONES");
+        for (int i = 0; i < contadorOperaciones; i++) {
+            System.out.println(TiposOperaciones[i].getIdTipoOperacion() + ".  " + TiposOperaciones[i].getDescripcion());
+        }
+        Herramienta.pausa(3000);
+    }
+    
     public static void main(String[] args) throws IOException, InterruptedException {
         int respuesta;
         tipoCuenta = new TipoCuenta[10];
@@ -226,7 +253,7 @@ public class Main {
                     break;
                 case 3:
                     Herramienta.limpiarPantalla(20);
-                    System.out.println("Tipos de Operaciones");
+                    ingresar_tipos_operaciones();
                     break;
                 case 4:
                     Herramienta.limpiarPantalla(20);
