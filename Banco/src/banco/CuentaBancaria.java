@@ -12,7 +12,8 @@ public class CuentaBancaria {
     private String numeroCuenta;
     private String tipoCuenta;
     static int contadorCuentas;
-
+    float saldo;
+    
     
     public CuentaBancaria(){
     
@@ -62,5 +63,29 @@ public class CuentaBancaria {
     public int getContadorCuentas()
         {
          return contadorCuentas;  
+        }
+    public float getSaldo()
+        {
+          return saldo; 
+        }
+    public void setSaldo(float saldo)
+        {
+         this.saldo=saldo;   
+        }
+    public void depositar(float saldo)
+        {
+        this.saldo= this.saldo + saldo;
+        }
+    public void retirar (float monto)
+        {
+        if (monto>getSaldo())
+           {
+            System.out.println("saldo insuficiente");
+           }
+        else
+            {
+            this.saldo=this.saldo-monto;
+ 
+            }
         }
 }
