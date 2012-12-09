@@ -14,6 +14,10 @@ public class Main {
     static int contadorTipoCuenta = 0;
     static int contadorClientes = 0;
     static int contadorOperaciones = 0;
+    static OperacionBancaria[] Operacion = new OperacionBancaria[100];
+    static int contadorOperacion=0;
+            //para registar las operaciones bancarias
+
 
     //metodo para llamar al menu principal
     public static void mostrarMenu() {
@@ -39,7 +43,7 @@ public class Main {
         System.out.println("1. Consultar Cuentas de un Cliente");
         System.out.println("2. Consultar Cuenta");
         System.out.println("3. Listado de Clientes");
-        System.out.println("4. Listado de Cuentas");
+        System.out.println("4. Operaciones Bancarias");
         System.out.println("5. Listado de Tipos de Operaciones");
         System.out.println("6. Listado de Tipo de Cuentas");
         System.out.println("7. Volver");
@@ -71,7 +75,8 @@ public class Main {
                     imprimir_lista_clientes();
                     break;
                 case 4:
-
+                    //imprimir las operaciones bancarias
+                    imprimirOperacionesBancarias();
                     break;
                 case 5:
                     //imprime un listado con los tipos de operaciones
@@ -367,7 +372,8 @@ char resp = 's';
         }
  }
 
-public static void depositar() throws IOException
+    @SuppressWarnings("static-access")
+    public static void depositar() throws IOException
     {
         Herramienta.limpiarPantalla(20);
         int pos = -1; int pos2= -1; 
@@ -396,6 +402,9 @@ public static void depositar() throws IOException
                         System.out.println("ingrese monto a Depositar");
                         float montod = Float.parseFloat(Herramienta.leerEntrada());
                         clientes[pos].cuentas[pos2].depositar(montod);
+                        //registro la operacion bancaria
+                        Operacion[contadorOperacion] = new OperacionBancaria(1, pos2, montod);
+                        contadorOperacion++;
                     }   
     }
                
@@ -429,15 +438,31 @@ public static void retirar() throws IOException
                         System.out.println("ingrese monto a Retirar");
                         float montod = Float.parseFloat(Herramienta.leerEntrada());
                         clientes[pos].cuentas[pos2].retirar(montod);
+                        //registro la operacion bancara
+                        Operacion[contadorOperacion] = new OperacionBancaria(2, pos2, montod);
+                        contadorOperacion++;
+                       
                     }   
     }
     }
        
+ //metodo para imprimir el tipo los tipos de cuanta
+    public static void imprimirOperacionesBancarias() throws InterruptedException, IOException {
+        Herramienta.limpiarPantalla(20);
+        System.out.println("IMPRIMIR OPERACIONES BANCARIAS");
+        System.out.println("CLAVE \tFECHA \tIDOPERACION  \tMONTO");
+        for (int i = 0; i < contadorOperacion; i++) {
+           Operacion[i].imprimir();
+        }
+        Herramienta.presioneUnaTecla();
+    }
     //metodo main
     public static void main(String[] args) throws IOException, InterruptedException {
         int respuesta;
         //para registrar los tipo de cuenta
         tipoCuenta = new TipoCuenta[10];
+
+
 
 
         do {

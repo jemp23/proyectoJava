@@ -73,22 +73,22 @@ public class CuentaBancaria {
         {
          this.saldo=saldo;   
         }
-    public void depositar(float saldo) throws IOException
+    public void depositar(float saldo) throws IOException, InterruptedException
         {
             this.saldo= this.saldo + saldo;
             herramienta.Herramienta.limpiarPantalla(20);
             System.out.println("Deposito exitoso");
             System.out.println("Saldo disponible: "+getSaldo());
-            herramienta.Herramienta.presioneUnaTecla();
+            herramienta.Herramienta.pausa(3000);
         }
-    public void retirar (float monto) throws IOException
+    public void retirar (float monto) throws IOException, InterruptedException
         {
         if (monto>getSaldo())
            {
             herramienta.Herramienta.limpiarPantalla(20);   
             System.out.println("saldo insuficiente");
             System.out.println("Saldo disponible: "+getSaldo());
-            herramienta.Herramienta.presioneUnaTecla();
+            herramienta.Herramienta.pausa(3000);
            }
         else
             {
@@ -96,7 +96,7 @@ public class CuentaBancaria {
             this.saldo=this.saldo-monto;
             System.out.println("Retiro exitoso");
             System.out.println("Saldo disponible: "+getSaldo());
-            herramienta.Herramienta.presioneUnaTecla();
+            herramienta.Herramienta.pausa(3000);
  
             }
         }
