@@ -57,7 +57,7 @@ public class Main {
                     buscar_cliente();
                     break;
                 case 2:
-
+                        buscarCuenta();
                     break;
                 case 3:
                     imprimir_lista_clientes();
@@ -290,6 +290,41 @@ public class Main {
         Herramienta.pausa(3000);
     }
     
+public static void buscarCuenta() throws IOException 
+        {
+
+        Herramienta.limpiarPantalla(20);
+        int pos = -1; int pos2= -1; 
+        System.out.println("Ingrese el numero de cuenta");
+        String NumeroCuenta = Herramienta.leerEntrada();
+        
+        for (int i = 0; i < contadorClientes; i++) 
+                    {
+                    for (int j = 0; j < clientes[i].getContadorCuentas(); j++) 
+                        {
+                        if (clientes[i].cuentas[j].getNumeroCuenta()==NumeroCuenta) 
+                            {
+                            pos=i;   pos2=j;
+                            }
+                        }    
+                 if(pos == -1)
+                    {
+                     System.out.println(" No hay coincidencias.");
+                     Herramienta.presioneUnaTecla();
+                    }
+                 else
+                    {
+                        System.out.println("Numero Cuenta \tCliente \tTipo");
+                        System.out.println(clientes[pos].cuentas[pos2].getNumeroCuenta()+" \t"+clientes[pos].getNombreCliente()+" \t"+clientes[pos].cuentas[pos2].getTipoCuenta());   
+                        herramienta.Herramienta.presioneUnaTecla();
+                    }   
+                
+
+
+    }
+ }
+       
+
     public static void main(String[] args) throws IOException, InterruptedException {
         int respuesta;
         tipoCuenta = new TipoCuenta[10];
