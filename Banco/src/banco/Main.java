@@ -296,15 +296,17 @@ public static void buscarCuenta() throws IOException
         Herramienta.limpiarPantalla(20);
         int pos = -1; int pos2= -1; 
         System.out.println("Ingrese el numero de cuenta");
-        String NumeroCuenta = Herramienta.leerEntrada();
+        int id = Integer.parseInt(Herramienta.leerEntrada());
         
         for (int i = 0; i < contadorClientes; i++) 
                     {
                     for (int j = 0; j < clientes[i].getContadorCuentas(); j++) 
                         {
-                        if (clientes[i].cuentas[j].getNumeroCuenta()==NumeroCuenta) 
+                             System.out.println(clientes[i].cuentas[j].getNumeroCuenta()+" \t"+clientes[i].getNombreCliente()+" \t"+clientes[i].cuentas[j].getTipoCuenta());
+                        if (clientes[i].cuentas[j].getIdCuentaBancaria()==id) 
                             {
                             pos=i;   pos2=j;
+                                
                             }
                         }    
                  if(pos == -1)
