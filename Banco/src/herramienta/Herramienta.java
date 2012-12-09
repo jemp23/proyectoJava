@@ -16,25 +16,25 @@ public class Herramienta
 {
     
         public static void limpiarPantalla(int lineas)
-        {
+            {
             for (int i = 0; i < lineas; i++) 
                 {
                     System.out.println("");
                 }
-        } 
+            } 
         
         public static void pausa(int milisegundos) throws InterruptedException
-        {
-        System.out.println("...");
-        Thread.sleep(milisegundos);
-        }
+            {
+            System.out.println("...");
+            Thread.sleep(milisegundos);
+            }
  
         public static void presioneUnaTecla() throws  IOException
-        {
-        limpiarPantalla(2);    
-        System.out.println("PRESIONE UNA TECLA PARA CONTINUAR...");
-        leerEntrada();
-        }        
+            {
+            limpiarPantalla(2);    
+            System.out.println("PRESIONE UNA TECLA PARA CONTINUAR...");
+            leerEntrada();
+            }        
         public static String leerEntrada() throws IOException
             {
             InputStreamReader entrada = new InputStreamReader(System.in);
