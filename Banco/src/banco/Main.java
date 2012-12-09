@@ -116,9 +116,11 @@ public class Main {
             respuesta = mostrarTipoOperaciones();
             switch (respuesta) {
                 case 1:
+                       depositar();  
                        break;
                 case 2:
-                    break;
+                       retirar(); 
+                       break;
                 case 3:
                     System.out.println("Menu Principal");
                     break;
@@ -327,7 +329,7 @@ char resp = 's';
             do {
         Herramienta.limpiarPantalla(20);
         int pos = -1; int pos2= -1; 
-        System.out.println("Ingrese el numero de cuenta");
+        System.out.println("Ingrese el id de cuenta");
         int id = Integer.parseInt(Herramienta.leerEntrada());
         
         for (int i = 0; i < contadorClientes; i++) 
@@ -364,6 +366,72 @@ char resp = 's';
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
  }
+
+public static void depositar() throws IOException
+    {
+        Herramienta.limpiarPantalla(20);
+        int pos = -1; int pos2= -1; 
+        System.out.println("Ingrese el id de cuenta");
+        int id = Integer.parseInt(Herramienta.leerEntrada());
+        
+        for (int i = 0; i < contadorClientes; i++) 
+                    {
+                    for (int j = 0; j < clientes[i].getContadorCuentas(); j++) 
+                        {
+                        if (clientes[i].cuentas[j].getIdCuentaBancaria()==id) 
+                            {
+                            pos=i;   pos2=j;
+                            }
+                        }    
+                 if(pos == -1)
+                    {
+                     System.out.println(" No hay coincidencias.");
+                     Herramienta.presioneUnaTecla();
+                    }
+                 else
+                    {
+                        System.out.println("Numero Cuenta \tCliente \tTipo");
+                        System.out.println(clientes[pos].cuentas[pos2].getNumeroCuenta()+" \t"+clientes[pos].getNombreCliente()+" \t"+clientes[pos].cuentas[pos2].getTipoCuenta());   
+                        
+                        System.out.println("ingrese monto a Depositar");
+                        float montod = Float.parseFloat(Herramienta.leerEntrada());
+                        clientes[pos].cuentas[pos2].depositar(montod);
+                    }   
+    }
+               
+    }
+public static void retirar() throws IOException
+    {
+         Herramienta.limpiarPantalla(20);
+        int pos = -1; int pos2= -1; 
+        System.out.println("Ingrese el id de cuenta");
+        int id = Integer.parseInt(Herramienta.leerEntrada());
+        
+        for (int i = 0; i < contadorClientes; i++) 
+                    {
+                    for (int j = 0; j < clientes[i].getContadorCuentas(); j++) 
+                        {
+                        if (clientes[i].cuentas[j].getIdCuentaBancaria()==id) 
+                            {
+                            pos=i;   pos2=j;
+                            }
+                        }    
+                 if(pos == -1)
+                    {
+                     System.out.println(" No hay coincidencias.");
+                     Herramienta.presioneUnaTecla();
+                    }
+                 else
+                    {
+                        System.out.println("Numero Cuenta \tCliente \tTipo");
+                        System.out.println(clientes[pos].cuentas[pos2].getNumeroCuenta()+" \t"+clientes[pos].getNombreCliente()+" \t"+clientes[pos].cuentas[pos2].getTipoCuenta());   
+                        
+                        System.out.println("ingrese monto a Retirar");
+                        float montod = Float.parseFloat(Herramienta.leerEntrada());
+                        clientes[pos].cuentas[pos2].retirar(montod);
+                    }   
+    }
+    }
        
     //metodo main
     public static void main(String[] args) throws IOException, InterruptedException {
