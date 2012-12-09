@@ -413,7 +413,7 @@ char resp = 's';
                     System.out.println("Adios");
                     break;
                 default:
-                    //cuando la opcion no es correcta
+                    //cuando la opcion no es 
                     Herramienta.limpiarPantalla(20);
                     System.out.println("Opcion Invalida");
                     Herramienta.pausa(3000);
