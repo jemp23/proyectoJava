@@ -292,7 +292,9 @@ public class Main {
     
 public static void buscarCuenta() throws IOException 
         {
-
+char resp = 's';
+        try {
+            do {
         Herramienta.limpiarPantalla(20);
         int pos = -1; int pos2= -1; 
         System.out.println("Ingrese el numero de cuenta");
@@ -302,7 +304,7 @@ public static void buscarCuenta() throws IOException
                     {
                     for (int j = 0; j < clientes[i].getContadorCuentas(); j++) 
                         {
-                             System.out.println(clientes[i].cuentas[j].getNumeroCuenta()+" \t"+clientes[i].getNombreCliente()+" \t"+clientes[i].cuentas[j].getTipoCuenta());
+                            
                         if (clientes[i].cuentas[j].getIdCuentaBancaria()==id) 
                             {
                             pos=i;   pos2=j;
@@ -324,6 +326,13 @@ public static void buscarCuenta() throws IOException
 
 
     }
+                System.out.println("Desea Consultar otra cuenta? s/n");
+                resp = Herramienta.leerEntrada().charAt(0);
+         } while (resp == 's' || resp == 'S');
+
+        } catch (IOException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
  }
        
 
